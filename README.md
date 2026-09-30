@@ -1,131 +1,63 @@
-# Kane's Arch
+# OrinsArch
 
-<p align="center">
-  <img src="https://img.shields.io/badge/RAM-0%20MB-brightgreen" alt="RAM: 0 MB">
-  <img src="https://img.shields.io/badge/GPU-not%20required-brightgreen" alt="GPU: not required">
-  <img src="https://img.shields.io/badge/version-2.0%20%22ARCHed%22-blue" alt="version 2.0">
-  <img src="https://img.shields.io/badge/license-MIT-lightgrey" alt="license: MIT">
-  <img src="https://img.shields.io/badge/build-passing-brightgreen" alt="build passing">
-  <img src="https://img.shields.io/badge/maintainer-1%20person-orange" alt="maintainer: 1 person">
-</p>
+A branded, Arch Linux-based live/rescue ISO, maintained by **Orin Blackwel**.
 
-<p align="center">
-  <b>A minimalist, independently developed Linux distribution built on an Arch base.</b><br>
-  Runs on 0 MB of RAM and 0 GPU, executing entirely on CPU.
-</p>
-
----
-
-## Table of Contents
-
-- [About](#about)
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Version History](#version-history)
-- [Documentation](#documentation)
-- [FAQ](#faq)
-- [Contributing](#contributing)
-- [License](#license)
-
-## About
-
-Kane's Arch is a rolling-release, Arch-based Linux distribution engineered around a
-single constraint: it does not require memory or a graphics device to boot, render,
-or run a full desktop environment.
-
-This is not emulation and it is not a compatibility shim. The project's position is
-that most of what a modern OS does, it does slower — and with more hardware — than
-it strictly needs to. Kane's Arch removes the parts everyone assumed were mandatory.
-
-There are two public releases. See [Version History](#version-history) below.
-
-## Features
-
-- **RAM-less Kernel (RLK)** — process state lives entirely in CPU cache and register files
-- **Wraith Compositor** — fully software-driven display pipeline, no GPU or framebuffer required
-- **`pacman-cpu`** — a `pacman` fork that compiles packages directly to cache-resident microcode
-- **Zero-swap by design** — there's nothing to swap out of, so swap isn't supported
-- **KaneWM** — minimal tiling window manager, zero animations by design
-- Fully open source, MIT licensed
+OrinsArch is built with the official [`archiso`](https://wiki.archlinux.org/title/Archiso)
+`releng` profile. The kernel, packages and install process are stock Arch Linux.
+OrinsArch adds its own branding (`os-release`, login banner, `fastfetch` screen,
+boot menu entries) and a few extra packages.
 
 ## Requirements
 
-| Component | Requirement |
-|---|---|
-| CPU | Any x86_64, single core is sufficient |
-| RAM | **0 MB** |
-| GPU | **Not required** |
-| Storage | ~1.2 MB for the base image |
-| Internet | Only to download the ISO once |
+**To build:** an Arch Linux machine (or container) with root access, the `archiso`
+package, and several GB of free disk space and an internet connection.
 
-## Installation
+**To run the ISO:** any x86_64 machine or VM. Use at least 2 GB of RAM for the
+live environment, as it runs from memory.
 
-**Quick install (recommended for evaluation only):**
+## Build
 
 ```bash
-curl -sSL https://kanes-arch.example/install.sh | bash
-```
-
-> As with any `curl | bash` install, you should read the script before running it.
-> A copy is included in this repo as [`install.sh`](./install.sh).
-
-**Build from source (real, working `archiso`-based build):**
-
-```bash
-git clone https://github.com/kanesarch/kanesarch.git
-cd kanesarch
+git clone https://github.com/joshm858/kanearch.git
+cd kanearch
 sudo pacman -S --needed archiso
-sudo ./build-kanes-arch.sh
+sudo ./build-orinsarch.sh
 ```
 
-This produces a real, bootable `.iso` using the same tooling Arch Linux itself uses
-for its official install media (`archiso`, `releng` profile), with Kane's Arch
-branding patched in. See [`docs/WIKI.md`](./docs/WIKI.md) for the full build
-walkthrough and customization options.
+The ISO is written to `./out/orinsarch-*.iso`. Add packages with:
 
-## Version History
+```bash
+sudo EXTRA_PACKAGES="git vim htop" ./build-orinsarch.sh
+```
 
-| Version | Codename | RAM | GPU | Source |
-|---|---|---|---|---|
-| v1.0 | "The Big Bang" | 1 MB minimum | Not required | Private, single machine |
-| v2.0 | "Kane Got ARCHed" | **0 MB** | **0 — never** | **Public, open source (MIT)** |
+## Try it
 
-Full changelog and reconstructed timeline: [`docs/NOTES.md`](./docs/NOTES.md).
+```bash
+qemu-system-x86_64 -m 2G -enable-kvm -boot d -cdrom out/orinsarch-*.iso
+```
+
+To write it to a USB drive (this destroys the drive's contents; check `/dev/sdX`):
+
+```bash
+sudo dd if=out/orinsarch-*.iso of=/dev/sdX bs=4M status=progress oflag=sync
+```
+
+## Installing to disk
+
+The ISO is a live/rescue image and has no dedicated installer. Use `archinstall`
+from the live shell, or follow the
+[Arch installation guide](https://wiki.archlinux.org/title/Installation_guide).
 
 ## Documentation
 
-- [`docs/WIKI.md`](./docs/WIKI.md) — architecture, install guide, troubleshooting, FAQ
-- [`docs/NOTES.md`](./docs/NOTES.md) — devlog, changelog, and known issues
+- [`WIKI.md`](./WIKI.md): what the build changes, configuration, troubleshooting
+- [`NOTES.md`](./NOTES.md): devlog, history and known issues
 
-## FAQ
+## History
 
-**How does an OS run with zero RAM?**
-See the Architecture section of the wiki. Short version: the RAM-less Kernel keeps
-all working state resident in CPU cache and negotiates directly with the CPU for
-everything else.
-
-**Does this actually work on my hardware?**
-Results vary. Please open an issue with your results either way.
-
-**Is this a real, functioning operating system?**
-This README is written in the same spirit as the rest of the documentation:
-seriously, consistently, and without further comment.
-
-## Contributing
-
-Issues and pull requests are welcome. Historically, none have been merged, but the
-project remains open to the idea in principle.
+The project started as "Kane's Arch" and was renamed OrinsArch. See
+[`NOTES.md`](./NOTES.md).
 
 ## License
 
-MIT — see [`LICENSE`](./LICENSE).
-
----
-
-<p align="center"><sub>
-Kane's Arch is a fictional project built for a friend-group prank. It is not a real,
-installable operating system. The <code>build-kanes-arch.sh</code> script referenced
-above does produce a real, bootable Arch Linux ISO with cosmetic rebranding — see
-the wiki for exactly what that script does and does not change.
-</sub></p>
+MIT
