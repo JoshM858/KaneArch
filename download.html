@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Download — KANE'S ARCH</title>
+<title>Download — ORINSARCH</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
@@ -54,7 +54,7 @@ tailwind.config = {
 
   <header class="border-b-2 border-terminal-amber pb-4 mb-10 flex justify-between items-end">
     <div>
-      <h1 class="font-headline text-3xl md:text-5xl font-bold uppercase flicker terminal-text leading-none">Kane's Arch</h1>
+      <h1 class="font-headline text-3xl md:text-5xl font-bold uppercase flicker terminal-text leading-none">OrinsArch</h1>
       <p class="text-terminal-amber-dim text-xs md:text-sm mt-2 uppercase tracking-wider">v2.0 "ARCHed" &middot; 0 MB RAM &middot; 0 GPU</p>
     </div>
     <span class="material-symbols-outlined text-3xl hidden sm:block">terminal</span>
@@ -73,7 +73,7 @@ tailwind.config = {
       </button>
     </div>
     <div class="bg-black border border-terminal-amber-dim p-4 text-xs md:text-sm overflow-x-auto">
-      <span class="text-terminal-green">$</span> <span id="cmd">curl -sSL https://kanes-arch.example/install.sh | bash</span>
+      <span class="text-terminal-green">$</span> <span id="cmd">curl -sSL https://orinsarch.example/install.sh | bash</span>
     </div>
 
     <div class="border-t border-terminal-amber-dim/40 my-6"></div>
@@ -89,9 +89,9 @@ tailwind.config = {
       </button>
     </div>
     <div class="bg-black border border-terminal-amber-dim p-4 text-xs md:text-sm overflow-x-auto">
-      <div><span class="text-terminal-green">$</span> git clone https://github.com/kanesarch/kanesarch.git</div>
-      <div><span class="text-terminal-green">$</span> cd kanesarch &amp;&amp; sudo pacman -S --needed archiso</div>
-      <div><span class="text-terminal-green">$</span> sudo ./build-kanes-arch.sh</div>
+      <div><span class="text-terminal-green">$</span> git clone https://github.com/joshm858/kanearch.git</div>
+      <div><span class="text-terminal-green">$</span> cd kanearch &amp;&amp; sudo pacman -S --needed archiso</div>
+      <div><span class="text-terminal-green">$</span> sudo ./build-orinsarch.sh</div>
     </div>
   </section>
 
@@ -114,13 +114,13 @@ tailwind.config = {
   <section class="mb-10">
     <h2 class="font-headline text-2xl uppercase mb-4 terminal-text">Documentation</h2>
     <div class="grid sm:grid-cols-2 gap-4">
-      <a href="./docs/WIKI.md" class="block border border-terminal-amber-dim p-4 hover:border-terminal-amber hover:bg-[#1a150d] transition-colors">
-        <div class="text-terminal-green text-[10px] uppercase tracking-widest mb-1">&gt; docs/WIKI.md</div>
+      <a href="./WIKI.md" class="block border border-terminal-amber-dim p-4 hover:border-terminal-amber hover:bg-[#1a150d] transition-colors">
+        <div class="text-terminal-green text-[10px] uppercase tracking-widest mb-1">&gt; WIKI.md</div>
         <div class="font-headline text-lg uppercase">Wiki</div>
         <div class="text-terminal-amber-dim text-xs mt-1">Architecture, install guide, troubleshooting, FAQ.</div>
       </a>
-      <a href="./docs/NOTES.md" class="block border border-terminal-amber-dim p-4 hover:border-terminal-amber hover:bg-[#1a150d] transition-colors">
-        <div class="text-terminal-green text-[10px] uppercase tracking-widest mb-1">&gt; docs/NOTES.md</div>
+      <a href="./NOTES.md" class="block border border-terminal-amber-dim p-4 hover:border-terminal-amber hover:bg-[#1a150d] transition-colors">
+        <div class="text-terminal-green text-[10px] uppercase tracking-widest mb-1">&gt; NOTES.md</div>
         <div class="font-headline text-lg uppercase">Devlog / Notes</div>
         <div class="text-terminal-amber-dim text-xs mt-1">Changelog, known issues, maintainer notes.</div>
       </a>
@@ -128,7 +128,7 @@ tailwind.config = {
   </section>
 
   <footer class="border-t border-terminal-amber-dim/40 pt-6 text-[10px] text-terminal-amber-dim/70 leading-relaxed uppercase tracking-wide">
-    Kane's Arch is not a real operating system. This page and install.sh print text only —
+    OrinsArch is not a real operating system. This page and install.sh print text only —
     nothing is downloaded, installed, or changed on your machine by the one-line command above.
     The archiso build script is real and produces an actual bootable ISO with cosmetic branding only.
   </footer>

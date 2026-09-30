@@ -1,4 +1,4 @@
-# Kane's Arch
+# OrinsArch
 
 <p align="center">
   <img src="https://img.shields.io/badge/RAM-0%20MB-brightgreen" alt="RAM: 0 MB">
@@ -30,13 +30,13 @@
 
 ## About
 
-Kane's Arch is a rolling-release, Arch-based Linux distribution engineered around a
+OrinsArch is a rolling-release, Arch-based Linux distribution engineered around a
 single constraint: it does not require memory or a graphics device to boot, render,
 or run a full desktop environment.
 
 This is not emulation and it is not a compatibility shim. The project's position is
 that most of what a modern OS does, it does slower — and with more hardware — than
-it strictly needs to. Kane's Arch removes the parts everyone assumed were mandatory.
+it strictly needs to. OrinsArch removes the parts everyone assumed were mandatory.
 
 There are two public releases. See [Version History](#version-history) below.
 
@@ -46,7 +46,7 @@ There are two public releases. See [Version History](#version-history) below.
 - **Wraith Compositor** — fully software-driven display pipeline, no GPU or framebuffer required
 - **`pacman-cpu`** — a `pacman` fork that compiles packages directly to cache-resident microcode
 - **Zero-swap by design** — there's nothing to swap out of, so swap isn't supported
-- **KaneWM** — minimal tiling window manager, zero animations by design
+- **OrinWM** — minimal tiling window manager, zero animations by design
 - Fully open source, MIT licensed
 
 ## Requirements
@@ -64,7 +64,7 @@ There are two public releases. See [Version History](#version-history) below.
 **Quick install (recommended for evaluation only):**
 
 ```bash
-curl -sSL https://kanes-arch.example/install.sh | bash
+curl -sSL https://orinsarch.example/install.sh | bash
 ```
 
 > As with any `curl | bash` install, you should read the script before running it.
@@ -73,15 +73,15 @@ curl -sSL https://kanes-arch.example/install.sh | bash
 **Build from source (real, working `archiso`-based build):**
 
 ```bash
-git clone https://github.com/kanesarch/kanesarch.git
-cd kanesarch
+git clone https://github.com/joshm858/kanearch.git
+cd kanearch
 sudo pacman -S --needed archiso
-sudo ./build-kanes-arch.sh
+sudo ./build-orinsarch.sh
 ```
 
 This produces a real, bootable `.iso` using the same tooling Arch Linux itself uses
-for its official install media (`archiso`, `releng` profile), with Kane's Arch
-branding patched in. See [`docs/WIKI.md`](./docs/WIKI.md) for the full build
+for its official install media (`archiso`, `releng` profile), with OrinsArch
+branding patched in. See [`WIKI.md`](./WIKI.md) for the full build
 walkthrough and customization options.
 
 ## Version History
@@ -89,14 +89,14 @@ walkthrough and customization options.
 | Version | Codename | RAM | GPU | Source |
 |---|---|---|---|---|
 | v1.0 | "The Big Bang" | 1 MB minimum | Not required | Private, single machine |
-| v2.0 | "Kane Got ARCHed" | **0 MB** | **0 — never** | **Public, open source (MIT)** |
+| v2.0 | "Orin Got ARCHed" | **0 MB** | **0 — never** | **Public, open source (MIT)** |
 
-Full changelog and reconstructed timeline: [`docs/NOTES.md`](./docs/NOTES.md).
+Full changelog and reconstructed timeline: [`NOTES.md`](./NOTES.md).
 
 ## Documentation
 
-- [`docs/WIKI.md`](./docs/WIKI.md) — architecture, install guide, troubleshooting, FAQ
-- [`docs/NOTES.md`](./docs/NOTES.md) — devlog, changelog, and known issues
+- [`WIKI.md`](./WIKI.md) — architecture, install guide, troubleshooting, FAQ
+- [`NOTES.md`](./NOTES.md) — devlog, changelog, and known issues
 
 ## FAQ
 
@@ -124,8 +124,8 @@ MIT — see [`LICENSE`](./LICENSE).
 ---
 
 <p align="center"><sub>
-Kane's Arch is a fictional project built for a friend-group prank. It is not a real,
-installable operating system. The <code>build-kanes-arch.sh</code> script referenced
+OrinsArch is a fictional project built for a friend-group prank. It is not a real,
+installable operating system. The <code>build-orinsarch.sh</code> script referenced
 above does produce a real, bootable Arch Linux ISO with cosmetic rebranding — see
 the wiki for exactly what that script does and does not change.
 </sub></p>

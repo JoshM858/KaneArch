@@ -1,11 +1,21 @@
-# Kane's Arch — Devlog / Notes
+# OrinsArch — Devlog / Notes
 
 Running notes, in rough chronological order. Less formal than the wiki —
 this is closer to a maintainer's scratch file than documentation.
 
 ---
 
-## v2.0 "Kane Got ARCHed"
+## Rename: OrinsArch
+
+- Project handed over to Orin Blackwel and renamed OrinsArch. All the same lies, new name.
+- `build-orinsarch.sh` (was `build-kanes-arch.sh`) now genuinely builds the ISO more
+  reliably: fixed fastfetch logo colour syntax, branded systemd-boot entries too,
+  added `EXTRA_PACKAGES`.
+- Added `install.sh`, the one the README always claimed was included.
+
+---
+
+## v2.0 "Orin Got ARCHed"
 
 - Went public. Repo is live, MIT licensed.
 - Issue tracker filled up almost immediately with variations on "how does this
@@ -34,7 +44,7 @@ this is closer to a maintainer's scratch file than documentation.
 - `mkarchiso` build times vary a lot by connection speed, since it pulls a full
   package set. Not a bug, just worth flagging so nobody assumes something's
   broken during a long build.
-- Boot menu label patch (`sed`-replacing "Arch Linux" → "Kane's Arch") is a
+- Boot menu label patch (`sed`-replacing "Arch Linux" → "OrinsArch") is a
   blunt find-and-replace. If a future `archiso` release changes the boot config
   file structure, this may need updating.
 - No installer GUI. No stable "install to disk" flow beyond what stock Arch's
@@ -47,7 +57,7 @@ this is closer to a maintainer's scratch file than documentation.
   keeping it minimal for now.
 - Could theme `archinstall` itself instead of just the live environment — bigger
   effort, unclear if worth it yet.
-- Someone asked if there's a Kane's Arch wallpaper. There isn't. Should there be.
+- Someone asked if there's a OrinsArch wallpaper. There isn't. Should there be.
 
 ---
 

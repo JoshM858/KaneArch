@@ -1,4 +1,4 @@
-# Kane's Arch — Wiki
+# OrinsArch — Wiki
 
 ## Contents
 
@@ -12,7 +12,7 @@
 
 ## Architecture
 
-Kane's Arch replaces two subsystems most distributions treat as non-negotiable:
+OrinsArch replaces two subsystems most distributions treat as non-negotiable:
 memory management and GPU-based rendering.
 
 ### RAM-less Kernel (RLK)
@@ -36,7 +36,7 @@ A fork of `pacman` that compiles packages directly into cache-resident microcode
 at install time, rather than writing binaries to disk in the traditional sense.
 Uninstalling a package returns the cache lines it used.
 
-### KaneWM
+### OrinWM
 
 The default window manager. Tiling, minimal, and deliberately animation-free —
 animations require frames, and frames require a framebuffer that this system does
@@ -44,34 +44,34 @@ not have.
 
 ## Installation Guide
 
-There are two ways to get Kane's Arch running:
+There are two ways to get OrinsArch running:
 
 ### 1. Quick install script
 
 ```bash
-curl -sSL https://kanes-arch.example/install.sh | bash
+curl -sSL https://orinsarch.example/install.sh | bash
 ```
 
 This prints an installation sequence to your terminal for demonstration purposes.
-Read [`install.sh`](../install.sh) before running any `curl | bash` command,
+Read [`install.sh`](./install.sh) before running any `curl | bash` command,
 including this one.
 
 ### 2. Build a real ISO
 
-Kane's Arch v2.0 ships with a real `archiso`-based build script
-(`build-kanes-arch.sh`) that produces an actual bootable Arch Linux ISO, with
-Kane's Arch branding patched into `/etc/os-release`, the boot menu, the login
+OrinsArch v2.0 ships with a real `archiso`-based build script
+(`build-orinsarch.sh`) that produces an actual bootable Arch Linux ISO, with
+OrinsArch branding patched into `/etc/os-release`, the boot menu, the login
 banner, and `fastfetch`.
 
 ```bash
 sudo pacman -S --needed archiso
-sudo ./build-kanes-arch.sh
+sudo ./build-orinsarch.sh
 ```
 
 Output ISO lands in `./out/`. Test it in a VM before writing it to physical media:
 
 ```bash
-qemu-system-x86_64 -m 2G -enable-kvm -boot d -cdrom ./out/kanesarch-*.iso
+qemu-system-x86_64 -m 2G -enable-kvm -boot d -cdrom ./out/orinsarch-*.iso
 ```
 
 Full details on exactly what the script changes (and doesn't) are in the script's
@@ -79,19 +79,19 @@ own header comments.
 
 ## Configuration
 
-Kane's Arch does not currently expose a dedicated configuration tool. Standard
+OrinsArch does not currently expose a dedicated configuration tool. Standard
 Arch Linux configuration approaches apply, since the underlying system is
 unmodified stock Arch.
 
 | File | Purpose |
 |---|---|
-| `/etc/os-release` | Distro identification (patched to "Kane's Arch") |
+| `/etc/os-release` | Distro identification (patched to "OrinsArch") |
 | `/etc/fastfetch/config.jsonc` | System-info display config |
 | `/etc/motd` | Post-login message |
 
 ## Troubleshooting
 
-**`fastfetch` still says "Arch Linux," not "Kane's Arch."**
+**`fastfetch` still says "Arch Linux," not "OrinsArch."**
 Confirm `/etc/os-release` was actually overwritten by the build script and that
 you're not looking at a cached `neofetch`/`fastfetch` config from a different
 profile.
@@ -108,12 +108,12 @@ having the correct reaction.
 ## FAQ
 
 **Is this a real, functioning operating system?**
-The live/rescue environment produced by `build-kanes-arch.sh` is a real, bootable
+The live/rescue environment produced by `build-orinsarch.sh` is a real, bootable
 Arch Linux system — the RAM/GPU claims are not literally true; see Architecture
 for how the branding and framing work.
 
 **Can I contribute?**
-Issues and PRs are open. See the main [`README.md`](../README.md).
+Issues and PRs are open. See the main [`README.md`](./README.md).
 
 **Is there a desktop environment?**
 Not by default — the live build uses the minimal `releng` profile. See the
