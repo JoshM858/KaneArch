@@ -55,22 +55,38 @@ tailwind.config = {
   <header class="border-b-2 border-terminal-amber pb-4 mb-10 flex justify-between items-end">
     <div>
       <h1 class="font-headline text-3xl md:text-5xl font-bold uppercase flicker terminal-text leading-none">OrinsArch</h1>
-      <p class="text-terminal-amber-dim text-xs md:text-sm mt-2 uppercase tracking-wider">Arch-based live/rescue ISO &middot; by Orin Blackwel</p>
+      <p class="text-terminal-amber-dim text-xs md:text-sm mt-2 uppercase tracking-wider">v2.0 "ARCHed" &middot; 0 MB RAM &middot; 0 GPU</p>
     </div>
     <span class="material-symbols-outlined text-3xl hidden sm:block">terminal</span>
   </header>
 
   <!-- Download panel -->
   <section class="border border-terminal-amber-dim p-6 mb-10">
-    <div class="text-xs text-terminal-green uppercase tracking-widest mb-3">// Build the ISO</div>
+    <div class="text-xs text-terminal-green uppercase tracking-widest mb-3">// Recommended</div>
+    <div class="flex flex-col sm:flex-row sm:items-center gap-4 justify-between mb-6">
+      <div>
+        <div class="font-headline text-xl uppercase">One-line install</div>
+        <div class="text-terminal-amber-dim text-xs mt-1">Prints an install sequence to your terminal. Installs nothing.</div>
+      </div>
+      <button onclick="copyCmd()" class="border-2 border-terminal-amber px-4 py-2 text-xs font-bold uppercase hover:bg-terminal-amber hover:text-terminal-bg transition-colors whitespace-nowrap">
+        Copy command
+      </button>
+    </div>
+    <div class="bg-black border border-terminal-amber-dim p-4 text-xs md:text-sm overflow-x-auto">
+      <span class="text-terminal-green">$</span> <span id="cmd">curl -sSL https://orinsarch.example/install.sh | bash</span>
+    </div>
+
+    <div class="border-t border-terminal-amber-dim/40 my-6"></div>
+
+    <div class="text-xs text-terminal-green uppercase tracking-widest mb-3">// Real ISO build (actual archiso, cosmetic branding only)</div>
     <div class="flex flex-col sm:flex-row sm:items-center gap-4 justify-between mb-4">
       <div>
         <div class="font-headline text-xl uppercase">Build from source</div>
         <div class="text-terminal-amber-dim text-xs mt-1">Produces a real, bootable Arch ISO via <code>archiso</code>.</div>
       </div>
-      <a href="https://github.com/joshm858/kanearch" class="border-2 border-terminal-amber px-4 py-2 text-xs font-bold uppercase hover:bg-terminal-amber hover:text-terminal-bg transition-colors whitespace-nowrap">
-        Get the repo
-      </a>
+      <button onclick="showToast('Download started. (Not really — see the repo for the real build script.)')" class="border-2 border-terminal-amber-dim px-4 py-2 text-xs font-bold uppercase hover:border-terminal-amber hover:text-terminal-amber transition-colors whitespace-nowrap">
+        Get build script
+      </button>
     </div>
     <div class="bg-black border border-terminal-amber-dim p-4 text-xs md:text-sm overflow-x-auto">
       <div><span class="text-terminal-green">$</span> git clone https://github.com/joshm858/kanearch.git</div>
@@ -84,12 +100,12 @@ tailwind.config = {
     <h2 class="font-headline text-2xl uppercase mb-4 terminal-text">System Requirements</h2>
     <div class="border border-terminal-amber-dim">
       <div class="grid grid-cols-2 text-xs md:text-sm">
-        <div class="p-3 border-b border-r border-terminal-amber-dim text-terminal-amber-dim">Build host</div>
-        <div class="p-3 border-b border-terminal-amber-dim">Arch Linux + archiso, root, several GB disk</div>
-        <div class="p-3 border-b border-r border-terminal-amber-dim text-terminal-amber-dim">RAM (live ISO)</div>
-        <div class="p-3 border-b border-terminal-amber-dim">2 GB recommended</div>
+        <div class="p-3 border-b border-r border-terminal-amber-dim text-terminal-amber-dim">RAM</div>
+        <div class="p-3 border-b border-terminal-amber-dim text-terminal-green font-bold">0 MB</div>
+        <div class="p-3 border-b border-r border-terminal-amber-dim text-terminal-amber-dim">GPU</div>
+        <div class="p-3 border-b border-terminal-amber-dim text-terminal-green font-bold">Not required</div>
         <div class="p-3 border-r border-terminal-amber-dim text-terminal-amber-dim">CPU</div>
-        <div class="p-3">x86_64</div>
+        <div class="p-3">Any x86_64</div>
       </div>
     </div>
   </section>
@@ -112,7 +128,9 @@ tailwind.config = {
   </section>
 
   <footer class="border-t border-terminal-amber-dim/40 pt-6 text-[10px] text-terminal-amber-dim/70 leading-relaxed uppercase tracking-wide">
-    OrinsArch is stock Arch Linux (archiso releng profile) with OrinsArch branding. Maintained by Orin Blackwel.
+    OrinsArch is not a real operating system. This page and install.sh print text only —
+    nothing is downloaded, installed, or changed on your machine by the one-line command above.
+    The archiso build script is real and produces an actual bootable ISO with cosmetic branding only.
   </footer>
 
 </main>
@@ -129,6 +147,18 @@ function showToast(msg){
     t.classList.remove('opacity-100');
     t.classList.add('opacity-0');
   }, 2800);
+}
+function copyCmd(){
+  var text = document.getElementById('cmd').textContent;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(function(){
+      showToast('Copied to clipboard.');
+    }, function(){
+      showToast('Copy failed — select the text manually.');
+    });
+  } else {
+    showToast('Copy failed — select the text manually.');
+  }
 }
 </script>
 

@@ -114,7 +114,7 @@ ISSUE
 # ---------------------------------------------------------------------------
 echo "==> Writing motd"
 cat > airootfs/etc/motd << 'MOTD'
-Welcome to OrinsArch, maintained by Orin Blackwel.
+Welcome to OrinsArch, maintained by Orin Blackwel. Running on 0 MB of RAM.
 
 This is a real Arch Linux live system. The kernel, packages and install
 process are stock Arch; OrinsArch adds branding and a few extra packages.
